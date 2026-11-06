@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Workspace with purple ambient lighting</title>
+  <desc id="desc">A modern workstation with monitors and violet neon accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0a15"/>
+      <stop offset="100%" stop-color="#1b1130"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <radialGradient id="light" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <ellipse cx="600" cy="460" rx="420" ry="240" fill="url(#light)"/>
+  <rect x="90" y="560" width="1020" height="240" rx="24" fill="#130f21"/>
+  <rect x="205" y="240" width="510" height="300" rx="22" fill="#090814" stroke="#5b21b6" stroke-width="5"/>
+  <rect x="235" y="270" width="450" height="220" rx="14" fill="url(#screen)"/>
+  <rect x="760" y="290" width="240" height="190" rx="16" fill="#0a0a12" stroke="#7c3aed" stroke-width="4"/>
+  <rect x="785" y="315" width="190" height="140" rx="10" fill="#312e81"/>
+  <rect x="430" y="540" width="70" height="36" rx="9" fill="#4c1d95"/>
+  <rect x="375" y="576" width="175" height="18" rx="8" fill="#1f1b2f"/>
+  <rect x="655" y="620" width="205" height="95" rx="12" fill="#141028" stroke="#5b21b6" stroke-width="3"/>
+  <rect x="260" y="630" width="300" height="30" rx="15" fill="#2e1065"/>
+  <circle cx="1040" cy="145" r="4" fill="#ddd6fe"/>
+  <circle cx="1045" cy="170" r="2" fill="#ddd6fe"/>
+  <circle cx="1070" cy="157" r="3" fill="#ddd6fe"/>
+</svg>

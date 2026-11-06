@@ -1,0 +1,22 @@
+Akinai - Frontend Developer
+Email: akinai.dev@gmail.com
+Location: Bishkek, Kyrgyzstan
+
+Profile
+Creative frontend developer focused on modern, interactive and high-performance web interfaces.
+
+Core Skills
+- React
+- JavaScript / TypeScript
+- HTML5 / CSS3
+- Vite
+- Git & GitHub
+- UI/UX Collaboration
+
+Experience Highlights
+- Delivered responsive portfolio and business websites
+- Built interactive dashboards and product landing pages
+- Optimized UI performance and accessibility
+
+Education
+Bachelor in Software Engineering
