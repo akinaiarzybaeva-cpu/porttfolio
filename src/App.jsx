@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
+import resumePdf from './assets/Резюме.pdf'
 import './App.css'
 
 const translations = {
@@ -16,7 +18,7 @@ const translations = {
       greeting: "Hi, I'm Акинай ",
       title: 'Creative Developer',
       role: 'Junior Frontend Developer',
-      description: 'Junior Frontend Developer with a background in Applied Informatics. Skilled in HTML, CSS, JavaScript, and React. I build modern, responsive websites and applications. Passionate about continuous learning and professional growth in IT.',
+      description: 'Frontend Developer with a background in Applied Informatics. Skilled in HTML, CSS, JavaScript, and React. I build modern, responsive websites and applications. Passionate about continuous learning and professional growth in IT.',
       viewProjects: 'View My Projects →',
       downloadCv: 'Download CV',
     },
@@ -51,12 +53,17 @@ const translations = {
       subtitle: 'Have an idea, startup, or product? Send me a message and let us build it together.',
       name: 'Name',
       email: 'Email',
+      subject: 'Subject',
       message: 'Message',
       send: 'Send Message',
-      success: 'Your message is ready to send in your email app.',
+      sending: 'Sending...',
+      success: 'Message sent successfully!',
+      error: 'Something went wrong. Please try again.',
+      configError: 'EmailJS is not configured yet. Add your Service ID, Template ID, and Public Key to the .env file.',
       errors: {
         name: 'Please enter your name.',
         email: 'Please enter a valid email address.',
+        subject: 'Please enter a subject.',
         message: 'Please enter a message.',
       },
     },
@@ -75,7 +82,7 @@ const translations = {
     hero: {
       greeting: 'Привет, я Акинай ',
       title: 'Креативный разработчик',
-      role: 'Junior Frontend Developer',
+      role: ' Frontend Developer',
       description: 'Начинающий Frontend-разработчик с образованием в области прикладной информатики. Владею HTML, CSS, JavaScript и React. Создаю современные адаптивные веб-сайты и приложения. Стремлюсь к профессиональному росту и развитию в IT.',
       viewProjects: 'Смотреть проекты →',
       downloadCv: 'Скачать CV',
@@ -111,16 +118,21 @@ const translations = {
       subtitle: 'Есть идея, стартап или продукт? Напишите мне, и мы реализуем это вместе.',
       name: 'Имя',
       email: 'Почта',
+      subject: 'Тема',
       message: 'Сообщение',
       send: 'Отправить сообщение',
-      success: 'Ваше сообщение готово к отправке в почтовом приложении.',
+      sending: 'Отправка...',
+      success: 'Сообщение успешно отправлено!',
+      error: 'Что-то пошло не так. Попробуйте ещё раз.',
+      configError: 'EmailJS ещё не настроен. Добавьте Service ID, Template ID и Public Key в файл .env.',
       errors: {
         name: 'Пожалуйста, введите имя.',
         email: 'Пожалуйста, введите корректную почту.',
+        subject: 'Пожалуйста, укажите тему.',
         message: 'Пожалуйста, введите сообщение.',
       },
     },
-    footer: 'Дизайн и разработка: Akinai. Все права защищены.',
+    footer: 'Дизайн и разработка: Акинай. Все права защищены.',
     dedicationValue: '100%',
   },
   kg: {
@@ -135,8 +147,8 @@ const translations = {
     hero: {
       greeting: 'Салам, мен Акинай ',
       title: 'Креативдүү иштеп чыгуучу',
-      role: 'Junior Frontend Developer',
-      description: 'Колдонмо информатика тармагында билим алган Junior Frontend Developer. HTML, CSS, JavaScript жана React технологияларын билем. Заманбап, адаптивдүү веб-сайттарды жана тиркемелерди түзөм. IT тармагында кесиптик жактан өсүүгө жана өнүгүүгө умтулам.',
+      role: 'Frontend Developer',
+      description: 'Колдонмо информатика тармагында билим алган Frontend Developer. HTML, CSS, JavaScript жана React технологияларын билем. Заманбап, адаптивдүү веб-сайттарды жана тиркемелерди түзөм. IT тармагында кесиптик жактан өсүүгө жана өнүгүүгө умтулам.',
       viewProjects: 'Долбоорлорумду көрүү →',
       downloadCv: 'CV жүктөө',
     },
@@ -171,16 +183,21 @@ const translations = {
       subtitle: 'Идеяңыз, стартапыңыз же продуктуңуз барбы? Мага жазыңыз, бирге ишке ашыралы.',
       name: 'Аты',
       email: 'Email',
+      subject: 'Тема',
       message: 'Билдирүү',
       send: 'Билдирүү жөнөтүү',
-      success: 'Билдирүүңүз почта колдонмосунда жөнөтүүгө даяр.',
+      sending: 'Жөнөтүлүүдө...',
+      success: 'Билдирүү ийгиликтүү жөнөтүлдү!',
+      error: 'Бир нерсе туура кетти. Кайра аракет кылып көрүңүз.',
+      configError: 'EmailJS азырынча конфигурацияланбады. .env файлына Service ID, Template ID жана Public Key кошуңуз.',
       errors: {
         name: 'Атыңызды жазыңыз.',
         email: 'Туура email дарек киргизиңиз.',
+        subject: 'Теманы киргизиңиз.',
         message: 'Билдирүү жазыңыз.',
       },
     },
-    footer: 'Дизайн жана иштеп чыгуу: Akinai. Бардык укуктар корголгон.',
+    footer: 'Дизайн жана иштеп чыгуу: Акинай. Бардык укуктар корголгон.',
     dedicationValue: '100%',
   },
 }
@@ -456,9 +473,10 @@ function App() {
   })
   const [language, setLanguage] = useState('en')
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('')
+  const [isSending, setIsSending] = useState(false)
   const [pointer, setPointer] = useState({ x: 0, y: 0 })
   const t = translations[language]
   const projects = projectContent[language]
@@ -500,6 +518,9 @@ function App() {
     if (!emailRegex.test(formData.email)) {
       nextErrors.email = t.contact.errors.email
     }
+    if (!formData.subject.trim()) {
+      nextErrors.subject = t.contact.errors.subject
+    }
     if (!formData.message.trim()) {
       nextErrors.message = t.contact.errors.message
     }
@@ -507,20 +528,53 @@ function App() {
     return Object.keys(nextErrors).length === 0
   }
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault()
     if (!validate()) {
       setStatus('')
       return
     }
-    const subject = encodeURIComponent('Portfolio Contact')
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
-    )
-    window.location.href = `mailto:akinai.dev@gmail.com?subject=${subject}&body=${body}`
-    setStatus(t.contact.success)
-    setFormData({ name: '', email: '', message: '' })
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus(t.contact.configError)
+      return
+    }
+
+    setIsSending(true)
+    setStatus(t.contact.sending)
     setErrors({})
+
+    try {
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'akinaiarzybaeva@gmail.com',
+          reply_to: formData.email,
+        },
+        { publicKey },
+      )
+
+      if (result.status === 200) {
+        setStatus(t.contact.success)
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatus(t.contact.error)
+      }
+    } catch (error) {
+      console.error('EmailJS send error:', error)
+      setStatus(t.contact.error)
+    } finally {
+      setIsSending(false)
+    }
   }
 
   const handlePointerMove = (event) => {
@@ -613,7 +667,13 @@ function App() {
               <button type="button" className="primary-btn" onClick={() => scrollToSection('projects')}>
                 {t.hero.viewProjects}
               </button>
-              <a href="/Akinai-CV.txt" download className="secondary-btn">
+              <a
+                href={resumePdf}
+                download="Akinai-Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="secondary-btn"
+              >
                 {t.hero.downloadCv}
               </a>
             </div>
@@ -863,6 +923,17 @@ function App() {
               {errors.email ? <small>{errors.email}</small> : null}
             </label>
             <label>
+              {t.contact.subject}
+              <input
+                type="text"
+                value={formData.subject}
+                onChange={(event) =>
+                  setFormData((prev) => ({ ...prev, subject: event.target.value }))
+                }
+              />
+              {errors.subject ? <small>{errors.subject}</small> : null}
+            </label>
+            <label>
               {t.contact.message}
               <textarea
                 rows="5"
@@ -873,8 +944,8 @@ function App() {
               />
               {errors.message ? <small>{errors.message}</small> : null}
             </label>
-            <button type="submit" className="primary-btn">
-              {t.contact.send}
+            <button type="submit" className="primary-btn" disabled={isSending}>
+              {isSending ? t.contact.sending : t.contact.send}
             </button>
             {status ? <p className="status-text">{status}</p> : null}
           </form>
