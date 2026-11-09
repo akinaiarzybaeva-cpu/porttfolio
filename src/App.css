@@ -1015,10 +1015,24 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 6.2rem;
   padding: 1.15rem 1rem 0.35rem;
+  background: linear-gradient(180deg, rgba(38, 31, 59, 0.72), rgba(20, 15, 35, 0.38));
+  border-bottom: 1px solid rgba(182, 149, 255, 0.2);
+}
+
+.project-icon-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0.7rem 1rem auto;
+  height: 0.22rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(103, 236, 255, 0.2), rgba(214, 170, 255, 0.7), rgba(103, 236, 255, 0.2));
 }
 
 .project-icon {
+  position: relative;
+  z-index: 1;
   width: 3rem;
   height: 3rem;
   border-radius: 0.95rem;
@@ -1050,6 +1064,14 @@ main {
 
 .project-card-minigame .project-icon {
   background: linear-gradient(140deg, rgba(227, 170, 255, 0.42), rgba(112, 57, 190, 0.42));
+}
+
+.project-card-my-diary .project-icon {
+  background: linear-gradient(140deg, rgba(255, 201, 191, 0.5), rgba(236, 103, 150, 0.42));
+}
+
+.project-card-physics-lessons .project-icon {
+  background: linear-gradient(140deg, rgba(150, 216, 255, 0.5), rgba(99, 102, 241, 0.45));
 }
 
 .project-body {

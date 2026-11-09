@@ -15,9 +15,9 @@ const translations = {
       letsTalk: "Let's Talk →",
     },
     hero: {
-      greeting: "Hi, I'm Акинай ",
+      greeting: "Hi, I'm Akinai ",
       title: 'Creative Developer',
-      role: 'Junior Frontend Developer',
+      role: 'Frontend Developer',
       description: 'Frontend Developer with a background in Applied Informatics. Skilled in HTML, CSS, JavaScript, and React. I build modern, responsive websites and applications. Passionate about continuous learning and professional growth in IT.',
       viewProjects: 'View My Projects →',
       downloadCv: 'Download CV',
@@ -82,7 +82,7 @@ const translations = {
     hero: {
       greeting: 'Привет, я Акинай ',
       title: 'Креативный разработчик',
-      role: ' Frontend Developer',
+      role: ' Фронтенд разработчик ',
       description: 'Начинающий Frontend-разработчик с образованием в области прикладной информатики. Владею HTML, CSS, JavaScript и React. Создаю современные адаптивные веб-сайты и приложения. Стремлюсь к профессиональному росту и развитию в IT.',
       viewProjects: 'Смотреть проекты →',
       downloadCv: 'Скачать CV',
@@ -147,8 +147,8 @@ const translations = {
     hero: {
       greeting: 'Салам, мен Акинай ',
       title: 'Креативдүү иштеп чыгуучу',
-      role: 'Frontend Developer',
-      description: 'Колдонмо информатика тармагында билим алган Frontend Developer. HTML, CSS, JavaScript жана React технологияларын билем. Заманбап, адаптивдүү веб-сайттарды жана тиркемелерди түзөм. IT тармагында кесиптик жактан өсүүгө жана өнүгүүгө умтулам.',
+      role: 'Фронтенд иштеп чыгуучу',
+      description: 'Колдонмо информатика тармагында билим алган Frontend иштеп чыгуучу. HTML, CSS, JavaScript жана React технологияларын билем. Заманбап, адаптивдүү веб-сайттарды жана тиркемелерди түзөм. IT тармагында кесиптик жактан өсүүгө жана өнүгүүгө умтулам.',
       viewProjects: 'Долбоорлорумду көрүү →',
       downloadCv: 'CV жүктөө',
     },
@@ -236,6 +236,20 @@ const projectContent = {
         'An interactive browser game with engaging gameplay, colorful visuals, and fun challenges.',
       link: 'https://minigame04.netlify.app/',
     },
+    {
+      id: 'my-diary',
+      title: 'My Diary',
+      description:
+        'A personal diary app for planning the day, tracking daily tasks, setting goals, and building healthy habits.',
+      link: 'https://mydiaryymysoul.netlify.app/',
+    },
+    {
+      id: 'physics-lessons',
+      title: 'Physics Lessons',
+      description:
+        'An educational platform for learning physics through structured lessons, study materials, and interactive exercises.',
+      link: 'https://physiclessons.netlify.app/',
+    },
   ],
   ru: [
     {
@@ -259,6 +273,20 @@ const projectContent = {
         'Интерактивная браузерная игра с увлекательным геймплеем, яркой графикой и интересными испытаниями.',
       link: 'https://minigame04.netlify.app/',
     },
+    {
+      id: 'my-diary',
+      title: 'Мой дневник',
+      description:
+        'Персональный дневник для планирования дня, записи повседневных задач, постановки целей и отслеживания привычек.',
+      link: 'https://mydiaryymysoul.netlify.app/',
+    },
+    {
+      id: 'physics-lessons',
+      title: 'Физические уроки',
+      description:
+        'Образовательная платформа для изучения физики с учебными материалами, уроками и интерактивными заданиями.',
+      link: 'https://physiclessons.netlify.app/',
+    },
   ],
   kg: [
     {
@@ -281,6 +309,20 @@ const projectContent = {
       description:
         'Кызыктуу геймплей, түстүү визуалдар жана көңүлдүү чакырыктар менен интерактивдүү браузер оюну.',
       link: 'https://minigame04.netlify.app/',
+    },
+    {
+      id: 'my-diary',
+      title: 'Менин күндөлүгүм',
+      description:
+        'Күн тартибин түзүү, күнүмдүк тапшырмаларды жазуу, максат коюу жана көндүмдөрдү көзөмөлдөө үчүн жеке күнделүк.',
+      link: 'https://mydiaryymysoul.netlify.app/',
+    },
+    {
+      id: 'physics-lessons',
+      title: 'Физикалык сабактар',
+      description:
+        'Физиканы үйрөнүү үчүн окуу материалдары, сабактар жана интерактивдүү тапшырмаларды сунуштаган билим берүү платформасы.',
+      link: 'https://physiclessons.netlify.app/',
     },
   ],
 }
@@ -438,10 +480,41 @@ const MiniGameLogo = () => (
   </svg>
 )
 
+const MyDiaryLogo = () => (
+  <svg viewBox="0 0 28 28" aria-hidden="true" style={projectLogoStyle}>
+    <defs>
+      <linearGradient id="grad-diary-book" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f9d7d2" />
+        <stop offset="100%" stopColor="#f48ba1" />
+      </linearGradient>
+    </defs>
+    <rect x="7" y="5.5" width="14" height="17" rx="2.4" fill="url(#grad-diary-book)" />
+    <path d="M10 10.2h8M10 14h8M10 17.6h5.2" stroke="#fff3f4" strokeWidth="1.4" strokeLinecap="round" />
+    <path d="M17.8 6.2v15.5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round" />
+    <circle cx="18.5" cy="10.8" r="1.2" fill="#fff0f4" />
+  </svg>
+)
+
+const PhysicsLessonsLogo = () => (
+  <svg viewBox="0 0 28 28" aria-hidden="true" style={projectLogoStyle}>
+    <defs>
+      <linearGradient id="grad-physics-orbit" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#7dd3fc" />
+        <stop offset="100%" stopColor="#4f46e5" />
+      </linearGradient>
+    </defs>
+    <circle cx="14" cy="14" r="4.2" fill="url(#grad-physics-orbit)" opacity="0.78" />
+    <path d="M14 4.5v19M4.5 14h19M8.3 8.3l11.4 11.4M19.7 8.3 8.3 19.7" stroke="url(#grad-physics-orbit)" strokeWidth="1.3" strokeLinecap="round" />
+    <circle cx="14" cy="14" r="1.5" fill="#f8fbff" />
+  </svg>
+)
+
 function ProjectLogo({ id }) {
   if (id === 'level-up') return <LevelUpLogo />
   if (id === 'weatherly') return <WeatherlyLogo />
   if (id === 'minigame') return <MiniGameLogo />
+  if (id === 'my-diary') return <MyDiaryLogo />
+  if (id === 'physics-lessons') return <PhysicsLessonsLogo />
   return null
 }
 
