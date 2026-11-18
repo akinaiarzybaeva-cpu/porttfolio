@@ -220,7 +220,7 @@ const projectContent = {
       title: 'LEVEL UP',
       description:
         'A modern online learning platform featuring interactive courses, video lessons, quizzes, and a personalized learning experience.',
-      link: 'https://levelup00.netlify.app/',
+      link: 'https://levelupp-cyan.vercel.app',
     },
     {
       id: 'weatherly',
@@ -257,7 +257,7 @@ const projectContent = {
       title: 'LEVEL UP',
       description:
         'Современная онлайн-платформа для обучения с интерактивными курсами, видеоуроками, квизами и персонализированным учебным опытом.',
-      link: 'https://levelup00.netlify.app/',
+      link: 'https://levelupp-cyan.vercel.app',
     },
     {
       id: 'weatherly',
@@ -294,7 +294,7 @@ const projectContent = {
       title: 'LEVEL UP',
       description:
         'Интерактивдүү курстар, видео сабактар, тесттер жана жекелештирилген окуу тажрыйбасын сунуштаган заманбап онлайн окуу платформасы.',
-      link: 'https://levelup00.netlify.app/',
+      link: 'https://levelupp-cyan.vercel.app',
     },
     {
       id: 'weatherly',
