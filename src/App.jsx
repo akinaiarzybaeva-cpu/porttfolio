@@ -227,7 +227,7 @@ const projectContent = {
       title: 'Weatherly',
       description:
         'A weather forecasting web application displaying real-time weather conditions, temperature, and forecasts for different cities.',
-      link: 'https://weathe-xi.vercel.app/',
+      link: 'https://weatherly-brown-theta.vercel.app/',
     },
     {
       id: 'minigame',
@@ -264,7 +264,7 @@ const projectContent = {
       title: 'Weatherly',
       description:
         'Веб-приложение прогноза погоды, отображающее текущие погодные условия, температуру и прогнозы для разных городов.',
-      link: 'https://weathe-xi.vercel.app/',
+      link: 'https://weatherly-brown-theta.vercel.app/',
     },
     {
       id: 'minigame',
@@ -301,7 +301,7 @@ const projectContent = {
       title: 'Weatherly',
       description:
         'Ар түрдүү шаарлар боюнча реалдуу убакыттагы аба ырайын, температураны жана божомолдорду көрсөткөн веб-тиркеме.',
-      link: 'https://weathe-xi.vercel.app/',
+      link: 'https://weatherly-brown-theta.vercel.app/',
     },
     {
       id: 'minigame',
