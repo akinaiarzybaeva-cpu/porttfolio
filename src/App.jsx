@@ -24,6 +24,8 @@ const translations = {
     },
     about: {
       title: 'About Me',
+      headingPrefix: "I'm a",
+      headingRole: 'Frontend Developer',
       bio: 'I am a goal-oriented and responsible Frontend Developer with training in applied informatics and practical experience in web development. I build responsive websites and web applications using HTML, CSS, JavaScript, and React.',
       education: 'Education',
       educationValue: 'Training at Okurmen IT Academy',
@@ -89,6 +91,8 @@ const translations = {
     },
     about: {
       title: 'Обо мне',
+      headingPrefix: 'Я',
+      headingRole: 'Frontend-разработчик',
       bio: 'Я целеустремлённая и ответственная Frontend-разработчик с образованием в области прикладной информатики и практическим опытом веб-разработки. Создаю адаптивные сайты и веб-приложения с использованием HTML, CSS, JavaScript и React.',
       education: 'Образование',
       educationValue: 'Обучение в Okurmen IT Academy',
@@ -154,6 +158,8 @@ const translations = {
     },
     about: {
       title: 'Мен жөнүндө',
+      headingPrefix: 'Мен',
+      headingRole: 'Frontend-иштеп чыгуучумун',
       bio: 'Мен IT тармагында прикладдык информатика боюнча билим алган, максатка умтулган жана жоопкерчиликтүү Frontend-иштеп чыгуучу. HTML, CSS, JavaScript жана React аркылуу адаптивдүү веб-сайттар менен веб-тиркемелерди иштеп чыгам.',
       education: 'Билим',
       educationValue: 'Okurmen IT Academyда билим алуу',
@@ -824,7 +830,7 @@ function App() {
               {t.about.title}
             </div>
             <h2 className="about-title">
-              I'm a <span>Frontend Developer</span>
+              {t.about.headingPrefix} <span>{t.about.headingRole}</span>
             </h2>
             <p className="about-description">{t.about.bio}</p>
             <button type="button" className="link-btn about-link-btn" onClick={() => scrollToSection('contact')}>
